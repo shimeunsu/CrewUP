@@ -5,6 +5,10 @@
  */
 
 // jQuery to collapse the navbar on scroll
+
+
+
+
 function collapseNavbar() {
     if ($(".navbar").offset().top > 50) {
         $(".navbar-fixed-top").addClass("top-nav-collapse");
@@ -27,12 +31,31 @@ $(function() {
     });
 });
 
+
+$(function () {
+    $('a[href="#search"]').on('click', function(event) {
+        event.preventDefault();
+        $('#search').addClass('open');
+        $('#search > form > input[type="search"]').focus();
+    });
+    
+    $('#search, #search button.close').on('click keyup', function(event) {
+        if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+            $(this).removeClass('open');
+        }
+    });
+    });
+    
+
+
+
 // Closes the Responsive Menu on Menu Item Click
 $('.navbar-collapse ul li a').click(function() {
   if ($(this).attr('class') != 'dropdown-toggle active' && $(this).attr('class') != 'dropdown-toggle') {
     $('.navbar-toggle:visible').click();
   }
 });
+
 
 // Google Maps Scripts
 var map = null;
@@ -184,4 +207,11 @@ function init() {
         map: map,
         icon: image
     });
+    
+    
+    
+    
 }
+
+
+
